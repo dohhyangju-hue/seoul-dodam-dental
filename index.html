@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="서울도담치과 — 관철동 종각역 도보 3분">
+  <title>서울도담치과</title>
+  <style>
+    :root {
+      --ink:     #0f1f3d;
+      --sub:     #5a6a85;
+      --accent:  #1a56db;
+      --accent-dark: #1340b0;
+      --bg:      #f0f4fb;
+      --line:    #d6e0f5;
+      --white:   #ffffff;
+      --font: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── 맨 위 줄 ── */
+    #top-bar {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px; height: 60px;
+      background: var(--white); border-bottom: 1px solid var(--line);
+    }
+    .logo {
+      font-size: 18px; font-weight: 800; letter-spacing: -0.03em; color: var(--accent);
+    }
+    .top-phone {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 15px; font-weight: 700; color: var(--accent);
+      text-decoration: none; min-height: 44px;
+    }
+    .top-phone:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+    @media (max-width: 480px) { #top-bar { padding: 0 20px; } .logo { font-size: 16px; } }
+
+    /* ── 첫 화면 ── */
+    #hero {
+      padding: 96px 32px 96px;
+      background: linear-gradient(150deg, #0f2a6e 0%, #1a56db 60%, #3b82f6 100%);
+      text-align: center;
+    }
+    .hero-label { color: rgba(255,255,255,0.7); }
+    .hero-title { color: #ffffff; }
+    .hero-title em { color: #93c5fd; font-style: normal; }
+    .hero-sub { color: rgba(255,255,255,0.8); }
+    .hero-label {
+      display: inline-block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.14em; color: var(--accent); text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-size: clamp(2rem, 5.5vw, 3.2rem);
+      font-weight: 900; letter-spacing: -0.04em; line-height: 1.15;
+      color: var(--ink); margin-bottom: 16px;
+    }
+    .hero-title em { color: var(--accent); font-style: normal; }
+    .hero-sub {
+      font-size: clamp(1rem, 2.2vw, 1.1rem);
+      color: var(--sub); line-height: 1.8; margin-bottom: 36px;
+    }
+    .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-hero-fill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; background: #ffffff; color: var(--accent);
+      font-size: 15px; font-weight: 700; border-radius: 4px;
+      border: 2px solid #ffffff; cursor: pointer;
+      transition: background 180ms, color 180ms; min-height: 44px;
+    }
+    .btn-hero-fill:hover { background: #e8f0fe; }
+    .btn-hero-fill:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+    .btn-hero-line {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; background: transparent; color: #ffffff;
+      font-size: 15px; font-weight: 700; border-radius: 4px;
+      border: 2px solid rgba(255,255,255,0.7); cursor: pointer;
+      transition: background 180ms; min-height: 44px;
+    }
+    .btn-hero-line:hover { background: rgba(255,255,255,0.12); }
+    .btn-hero-line:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+    .btn-fill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; background: var(--accent); color: var(--white);
+      font-size: 15px; font-weight: 700; border-radius: 4px;
+      border: 2px solid var(--accent); cursor: pointer;
+      transition: opacity 150ms; min-height: 44px; min-width: 44px;
+    }
+    .btn-fill:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+    .btn-fill:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .btn-line {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; background: transparent; color: var(--accent);
+      font-size: 15px; font-weight: 700; border-radius: 4px;
+      border: 2px solid var(--accent); cursor: pointer;
+      transition: background 150ms; min-height: 44px; min-width: 44px;
+    }
+    .btn-line:hover { background: rgba(26,86,219,0.07); }
+    .btn-line:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    @media (max-width: 480px) { #hero { padding: 56px 20px; } }
+
+    /* ── 공통 섹션 ── */
+    .sec { padding: 80px 32px; }
+    .sec-alt { background: var(--bg); }
+    .inner { max-width: 960px; margin: 0 auto; }
+    .sec-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; }
+    .sec-title { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 900; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 10px; }
+    .sec-desc { font-size: 15px; color: var(--sub); line-height: 1.8; max-width: 480px; }
+    .sec-head { margin-bottom: 48px; }
+    @media (max-width: 480px) { .sec { padding: 56px 20px; } }
+
+    /* ── 가치 카드 4개 ── */
+    .values { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .val-card {
+      padding: 32px 22px; background: var(--white);
+      border: 1px solid var(--line); border-radius: 6px;
+    }
+    .val-icon { margin-bottom: 16px; }
+    .val-name { font-size: 16px; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
+    .val-text { font-size: 14px; color: var(--sub); line-height: 1.75; }
+    @media (max-width: 768px) { .values { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .values { grid-template-columns: 1fr; } }
+
+    /* ── 장비 3개 ── */
+    .equips { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .eq-card {
+      background: var(--white); border: 1px solid var(--line); border-radius: 6px;
+      overflow: hidden;
+    }
+    .eq-img {
+      height: 160px; background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .eq-body { padding: 24px; }
+    .eq-tag {
+      display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      color: var(--accent); background: rgba(26,86,219,0.1);
+      padding: 3px 8px; border-radius: 3px; margin-bottom: 10px; text-transform: uppercase;
+    }
+    .eq-name { font-size: 17px; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
+    .eq-desc { font-size: 14px; color: var(--sub); line-height: 1.75; }
+    @media (max-width: 768px) { .equips { grid-template-columns: 1fr; } }
+
+    /* ── 오시는 길 ── */
+    .info-row { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .info-box { background: var(--white); border: 1px solid var(--line); border-radius: 6px; padding: 32px; }
+    .info-box-title {
+      font-size: 15px; font-weight: 800; color: var(--ink);
+      margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--line);
+    }
+    /* 지도 iframe */
+    .map-wrap { width: 100%; height: 200px; border-radius: 4px; overflow: hidden; margin-bottom: 16px; background: var(--bg); }
+    .map-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .map-addr { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+    .map-sub  { font-size: 13px; color: var(--sub); margin-bottom: 16px; }
+    .naver-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 10px 18px; background: #03c75a; color: var(--white);
+      font-size: 13px; font-weight: 700; border-radius: 4px;
+      cursor: pointer; min-height: 44px;
+      transition: opacity 150ms;
+    }
+    .naver-btn:hover { opacity: 0.88; }
+    .naver-btn:focus-visible { outline: 2px solid #03c75a; outline-offset: 3px; }
+    .hours-table { width: 100%; border-collapse: collapse; }
+    .hours-table tr { border-bottom: 1px solid var(--line); }
+    .hours-table tr:last-child { border-bottom: none; }
+    .hours-table td { padding: 11px 0; font-size: 14px; }
+    .hours-table td:first-child { color: var(--sub); }
+    .hours-table td:last-child { text-align: right; font-weight: 700; color: var(--ink); }
+    .hours-off { color: #bbb !important; font-weight: 400 !important; }
+    .hours-note { font-size: 11px; color: var(--accent); font-weight: 500; margin-left: 4px; }
+    .tel-row {
+      margin-top: 20px; padding: 16px 18px; background: var(--bg); border-radius: 4px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .tel-label { font-size: 13px; color: var(--sub); }
+    .tel-num { font-size: 20px; font-weight: 900; color: var(--accent); letter-spacing: 0.02em; }
+    @media (max-width: 768px) { .info-row { grid-template-columns: 1fr; } }
+
+    /* ── 맨 아래 정보 칸 ── */
+    footer { background: #0f2a6e; color: rgba(255,255,255,0.6); padding: 48px 32px 36px; }
+    .footer-inner { max-width: 960px; margin: 0 auto; }
+    .footer-logo { font-size: 17px; font-weight: 800; color: #93c5fd; margin-bottom: 16px; }
+    .footer-meta { font-size: 13px; line-height: 2; color: rgba(255,255,255,0.55); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 16px; }
+    @media (max-width: 480px) { footer { padding: 40px 20px 28px; } }
+
+    /* ── 접근성 ── */
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 맨 위 줄 -->
+<header id="top-bar">
+  <div class="logo">서울도담치과</div>
+  <a href="tel:02-725-9200" class="top-phone" aria-label="전화 02-725-9200">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)" aria-hidden="true">
+      <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
+    </svg>
+    02-725-9200
+  </a>
+</header>
+
+<!-- 첫 화면 -->
+<section id="hero" aria-label="메인 배너">
+  <div class="hero-label">Seoul Dodam Dental Clinic</div>
+  <h1 class="hero-title">치아를 살리는<br><em>장인의 손</em></h1>
+  <p class="hero-sub">
+    뽑기 전에 살리는 것을 먼저 고민합니다.<br>
+    디지털 정밀 진단으로 자연 치아 하나하나를 지켜드립니다.
+  </p>
+  <div class="hero-btns">
+    <a href="tel:02-725-9200" class="btn-hero-fill">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/>
+      </svg>
+      전화 상담
+    </a>
+    <a href="#info" class="btn-hero-line">오시는 길</a>
+  </div>
+</section>
+
+<!-- 우리가 지키는 가치 -->
+<section id="about" class="sec sec-alt" aria-labelledby="about-title">
+  <div class="inner">
+    <div class="sec-head">
+      <div class="sec-eyebrow">About Us</div>
+      <h2 class="sec-title" id="about-title">우리가 지키는 가치</h2>
+      <p class="sec-desc">서울도담치과가 진료실에서 매일 실천하는 네 가지 원칙입니다.</p>
+    </div>
+    <div class="values">
+      <div class="val-card">
+        <div class="val-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--accent)">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+        </div>
+        <div class="val-name">치아를 살립니다</div>
+        <div class="val-text">뽑는 것보다 살리는 것을 먼저 고민합니다. 자연 치아 하나가 평생 자산입니다.</div>
+      </div>
+      <div class="val-card">
+        <div class="val-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--accent)">
+            <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
+          </svg>
+        </div>
+        <div class="val-name">장인 정신</div>
+        <div class="val-text">빠른 치료보다 정밀한 치료를 추구합니다. 한 번 만든 것이 오래가야 한다고 믿습니다.</div>
+      </div>
+      <div class="val-card">
+        <div class="val-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--accent)">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 10.9 13 11.5 13 13h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
+          </svg>
+        </div>
+        <div class="val-name">희소한 전문성</div>
+        <div class="val-text">흔한 치료도 특별하게. 깊이 있는 임상 경험과 최신 교육으로 기준을 높입니다.</div>
+      </div>
+      <div class="val-card">
+        <div class="val-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--accent)">
+            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+          </svg>
+        </div>
+        <div class="val-name">인연의 소중함</div>
+        <div class="val-text">한 번 오신 분이 오래 머무는 병원. 환자와의 관계를 소중히 여깁니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 첨단 디지털 장비 -->
+<section id="digital" class="sec" aria-labelledby="digital-title">
+  <div class="inner">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Digital</div>
+      <h2 class="sec-title" id="digital-title">첨단 디지털 장비</h2>
+      <p class="sec-desc">정밀한 진단과 치료를 위해 최신 디지털 시스템을 갖추고 있습니다.</p>
+    </div>
+    <div class="equips">
+      <div class="eq-card">
+        <div class="eq-img" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="var(--accent)" opacity="0.35">
+            <path d="M9.5 6.5v3h-3v-3h3M11 5H5v6h6V5zm-1.5 9.5v3h-3v-3h3M11 13H5v6h6v-6zm6.5-6.5v3h-3v-3h3M19 5h-6v6h6V5zm-6 8h1.5v1.5H13V13zm1.5 1.5H16V16h-1.5v-1.5zM16 13h1.5v1.5H16V13zm-3 3h1.5v1.5H13V16zm1.5 1.5H16V19h-1.5v-1.5zM16 16h1.5v1.5H16V16zm1.5-1.5H19V16h-1.5v-1.5zM19 13h-1.5v-1.5H19V13z"/>
+          </svg>
+        </div>
+        <div class="eq-body">
+          <div class="eq-tag">3D Scanner</div>
+          <div class="eq-name">TRIOS 5</div>
+          <div class="eq-desc">3Shape의 최신 구강 스캐너. 빛과 분말 없이 수초 만에 정밀한 3D 구강 데이터를 얻습니다.</div>
+        </div>
+      </div>
+      <div class="eq-card">
+        <div class="eq-img" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="var(--accent)" opacity="0.35">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+          </svg>
+        </div>
+        <div class="eq-body">
+          <div class="eq-tag">CT</div>
+          <div class="eq-name">3D CT</div>
+          <div class="eq-desc">구강 전체를 입체적으로 파악합니다. 임플란트·신경치료 전 뼈의 두께와 신경 위치를 정확히 확인합니다.</div>
+        </div>
+      </div>
+      <div class="eq-card">
+        <div class="eq-img" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="var(--accent)" opacity="0.35">
+            <path d="M20 6h-2.18c.07-.44.18-.88.18-1.36C18 2.54 15.96.5 13.36.5c-1.31 0-2.43.52-3.29 1.35L9 2.96 7.93 1.85C7.07 1.02 5.95.5 4.64.5 2.04.5 0 2.54 0 5.14c0 .48.11.92.18 1.36H0v2h20V6zm-7.18 0c-.33-.39-.52-.9-.52-1.36 0-.79.54-1.14 1.04-1.14s1.04.35 1.04 1.14c0 .46-.19.97-.52 1.36h-1.04zm-5.64 0c-.33-.39-.52-.9-.52-1.36 0-.79.54-1.14 1.04-1.14s1.04.35 1.04 1.14c0 .46-.19.97-.52 1.36H7.18zM1 9v12h8V9H1zm10 0v12h8V9H11z"/>
+          </svg>
+        </div>
+        <div class="eq-body">
+          <div class="eq-tag">Printer</div>
+          <div class="eq-name">디지털 3D 프린팅</div>
+          <div class="eq-desc">스캔 데이터를 당일 보철물·가이드로 출력합니다. 기다리는 시간을 줄이고 정확도를 높입니다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 오시는 길 -->
+<section id="info" class="sec sec-alt" aria-labelledby="info-title">
+  <div class="inner">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Location</div>
+      <h2 class="sec-title" id="info-title">오시는 길</h2>
+    </div>
+    <div class="info-row">
+      <!-- 지도 -->
+      <div class="info-box">
+        <div class="info-box-title">위치 안내</div>
+        <div class="map-wrap">
+          <iframe
+            src="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%EB%8F%84%EB%8B%B4%EC%B9%98%EA%B3%BC/place/1994624985?c=15,0,0,0,dh"
+            title="서울도담치과 네이버 지도"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="map-addr">서울특별시 종로구 종로14길 32, 4층</div>
+        <div class="map-sub">관철동, 동흥빌딩 · 1호선 종각역 도보 3분</div>
+        <a
+          href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%EB%8F%84%EB%8B%B4%EC%B9%98%EA%B3%BC"
+          target="_blank" rel="noopener"
+          class="naver-btn"
+          aria-label="네이버 지도에서 서울도담치과 길찾기 (새 창)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+          네이버 길찾기
+        </a>
+      </div>
+      <!-- 진료시간 -->
+      <div class="info-box">
+        <div class="info-box-title">진료 시간</div>
+        <table class="hours-table" aria-label="진료 시간 안내">
+          <tbody>
+            <tr><td>월 · 화 · 수 · 금</td><td>09:30 – 18:00</td></tr>
+            <tr><td>목요일 <span class="hours-note">격주</span></td><td>09:30 – 18:00</td></tr>
+            <tr><td>토요일 <span class="hours-note">격주</span></td><td>09:30 – 13:30</td></tr>
+            <tr><td>일요일 · 공휴일</td><td class="hours-off">휴진</td></tr>
+            <tr><td>점심 시간</td><td>13:00 – 14:00</td></tr>
+          </tbody>
+        </table>
+        <div class="tel-row">
+          <div class="tel-label">전화 예약</div>
+          <a href="tel:02-725-9200" class="tel-num" aria-label="전화 02-725-9200">02-725-9200</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 맨 아래 정보 칸 -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">서울도담치과</div>
+    <ul class="footer-meta">
+      <li>대표원장 도향주</li>
+      <li>서울특별시 종로구 종로14길 32, 4층 (관철동, 동흥빌딩)</li>
+      <li>Tel. 02-725-9200</li>
+      <li>사업자등록번호 101-90-84546</li>
+    </ul>
+    <div class="footer-copy">© 서울도담치과. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
